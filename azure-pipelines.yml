@@ -4,12 +4,20 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+resources:
+  repositories:
+  - repository: self
+    type: git
+    name: Santhosh-m2004/maventestazure
+    endpoint: new connection   # Your PAT service connection name
+
 steps:
 - checkout: self
+  persistCredentials: true
 
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'  # ✅ Correct path based on your structure
+    mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
