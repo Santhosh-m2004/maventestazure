@@ -1,16 +1,5 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Docs: https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - main
-
-resources:
-  repositories:
-    - repository: self
-      type: github
-      name: Santhosh-m2004/maventestazure
-      endpoint: GitHub-Connection  # 🔁 Replace this with your actual service connection name
 
 pool:
   vmImage: ubuntu-latest
@@ -20,7 +9,7 @@ steps:
 
 - task: Maven@3
   inputs:
-    mavenPomFile: 'maventestazure/pom.xml'
+    mavenPomFile: 'pom.xml'  # ✅ Correct path based on your structure
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
